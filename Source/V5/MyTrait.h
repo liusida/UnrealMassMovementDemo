@@ -5,8 +5,7 @@
 #include "CoreMinimal.h"
 #include "MassEntityTraitBase.h"
 #include "MassEntityTypes.h"
-#include "MassCommonTypes.h"
-#include "MassEntityTemplateRegistry.h"
+
 
 #include "MyTrait.generated.h"
 
@@ -24,6 +23,5 @@ class V5_API UMyTrait : public UMassEntityTraitBase
 	GENERATED_BODY()
 	
 protected:
-	virtual void BuildTemplate(FMassEntityTemplateBuildContext& BuildContext, UWorld& World) const override;
-
+	virtual void BuildTemplate(FMassEntityTemplateBuildContext& BuildContext, const UWorld& World) const override;
 };

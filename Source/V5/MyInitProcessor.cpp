@@ -3,7 +3,7 @@
 
 #include "MyInitProcessor.h"
 #include "MassCommonFragments.h"
-#include "MassNavigationFragments.h"
+#include "MassExecutionContext.h"
 #include "MyTrait.h"
 
 UMyInitProcessor::UMyInitProcessor()
@@ -19,9 +19,11 @@ void UMyInitProcessor::ConfigureQueries()
 
     // I want to process all entities with tag FMyTag
 	EntityQuery.AddTagRequirement<FMyTag>(EMassFragmentPresence::All);
+    EntityQuery.RegisterWithProcessor(*this);
+
 }
 
-void UMyInitProcessor::Execute(UMassEntitySubsystem& EntitySubsystem, FMassExecutionContext& Context)
+void UMyInitProcessor::Execute(FMassEntityManager& EntitySubsystem, FMassExecutionContext& Context)
 {
 	EntityQuery.ForEachEntityChunk(EntitySubsystem, Context, ([this](FMassExecutionContext& Context)
     {
