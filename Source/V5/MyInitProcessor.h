@@ -3,7 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MassEntityManager.h"
 #include "MassObserverProcessor.h"
+#include "MassEntityQuery.h"
 #include "MyInitProcessor.generated.h"
 
 /**
@@ -18,7 +20,7 @@ public:
 
 protected:
 	virtual void ConfigureQueries() override;
-	virtual void Execute(UMassEntitySubsystem& EntitySubsystem, FMassExecutionContext& Context) override;
+	virtual void Execute(FMassEntityManager& EntitySubsystem, FMassExecutionContext& Context) override;
 
 private:
 	FMassEntityQuery EntityQuery;
